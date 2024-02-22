@@ -29,6 +29,20 @@ struct ContentView: View {
 
     @State private var tappedFlag = ""
 
+    let labels = [
+        "Estonia": "Flag with three horizontal stripes. Top stripe blue, middle stripe black, bottom stripe white.",
+        "France": "Flag with three vertical stripes. Left stripe blue, middle stripe white, right stripe red.",
+        "Germany": "Flag with three horizontal stripes. Top stripe black, middle stripe red, bottom stripe gold.",
+        "Ireland": "Flag with three vertical stripes. Left stripe green, middle stripe white, right stripe orange.",
+        "Italy": "Flag with three vertical stripes. Left stripe green, middle stripe white, right stripe red.",
+        "Nigeria": "Flag with three vertical stripes. Left stripe green, middle stripe white, right stripe green.",
+        "Poland": "Flag with two horizontal stripes. Top stripe white, bottom stripe red.",
+        "Spain": "Flag with three horizontal stripes. Top thin stripe red, middle thick stripe is gold with crest on the left, bottom thin stripe red.",
+        "UK": "Flag with overlapping red and white crosses, both straight and diagonally, on a blue background.",
+        "Ukraine": "Flag with two horizontal stripes. Top stripe blue, bottom stripe yellow.",
+        "US": "Flag with many red and white stripes, with white stars on a blue background in the top-left corner."
+    ]
+
     var body: some View {
         ZStack {
             RadialGradient(stops: [
@@ -60,6 +74,7 @@ struct ContentView: View {
                         } label: {
                             FlagImage(name: countries[number])
                         }
+                        .accessibilityLabel(labels[countries[number], default: "Unknown flag"])
                         .rotation3DEffect(
                             .degrees(countries[number] == tappedFlag ? 360 : 0),
                             axis: (x: 0.0, y: 1.0, z: 0.0)
